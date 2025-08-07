@@ -3,7 +3,10 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
-  "forwardPorts": [8000, 3306],
+  "forwardPorts": [
+    8000,
+    3306
+  ],
   "postCreateCommand": "composer install && cp .env.example .env && php artisan key:generate",
   "customizations": {
     "vscode": {
@@ -25,7 +28,9 @@
         "MYSQL_USER": "root",
         "MYSQL_PASSWORD": "secret"
       },
-      "ports": ["3306:3306"]
+      "ports": [
+        "3306:3306"
+      ]
     }
   }
 }
