@@ -1,12 +1,9 @@
 {
   "name": "Laravel Workspace",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "forwardPorts": [
-    8000,
-    3306
-  ],
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [8000, 3306],
   "postCreateCommand": "composer install && cp .env.example .env && php artisan key:generate",
   "customizations": {
     "vscode": {
@@ -15,21 +12,6 @@
         "onecentlin.laravel-blade",
         "ryannaddy.laravel-artisan",
         "felixfbecker.php-debug"
-      ]
-    }
-  },
-  "services": {
-    "mysql": {
-      "image": "mysql:8.0",
-      "restart": "always",
-      "env": {
-        "MYSQL_ROOT_PASSWORD": "secret",
-        "MYSQL_DATABASE": "laravel",
-        "MYSQL_USER": "root",
-        "MYSQL_PASSWORD": "secret"
-      },
-      "ports": [
-        "3306:3306"
       ]
     }
   }
