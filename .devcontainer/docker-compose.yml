@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ..:/workspace:cached
+        ports:
+            - "8000:8000"
+        environment:
+            - DB_HOST=mysql
+        depends_on:
+            - mysql
+        tty: true
+        stdin_open: true
+
+    mysql:
+        image: mysql:8.0
+        ports:
+            - "3306:3306"
+        environment:
+            # The database name needs to be updated here as well
+            - MYSQL_DATABASE=ecommercepro
+            - MYSQL_USER=laravel_user
+            - MYSQL_PASSWORD=secret
+            - MYSQL_ROOT_PASSWORD=secret
+        volumes:
+            - db-data:/var/lib/mysql
+
+volumes:
+    db-data: ~
