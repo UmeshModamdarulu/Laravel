@@ -18,7 +18,7 @@ services:
     restart: 'always'
     environment:
       MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: laravel
+      MYSQL_DATABASE: ecommercepro  # <--- Change this line
       MYSQL_USER: root
       MYSQL_PASSWORD: secret
     volumes:
