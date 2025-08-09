@@ -1,6 +1,6 @@
 {
   "name": "Laravel Codespace",
-  "image": "mcr.microsoft.com/devcontainers/php:8.1",
+  "image": "mcr.microsoft.com/devcontainers/php:8.2",
   "postCreateCommand": "composer install && php artisan key:generate",
   "forwardPorts": [8000],
   "extensions": ["bmewburn.vscode-intelephense-client", "ms-azuretools.vscode-docker"]
