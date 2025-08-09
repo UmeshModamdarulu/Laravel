@@ -5,21 +5,25 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\OrderController;
 
+Route::get('/test', function () {
+    return 'Test route is working!';
+});
 
-
+Route::get('/test-url', function () {
+    return env('APP_URL');
+});
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 });
 
+route::get('redirect',[HomeController::class,'redirect'])->middleware('auth');
 
-route::get('redirect',[HomeController::class,'redirect'])->middleware('auth','verified');
 
 
 //welcome page

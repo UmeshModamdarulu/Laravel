@@ -11,18 +11,18 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="{{asset('images/favicon.png')}}" type="">
+    <link rel="shortcut icon" href="images/favicon.png" type="">
     <title>Famms - Fashion HTML Template</title>
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('home/css/bootstrap.css')}}" />
+    <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
     <!-- font awesome style -->
-    <link href="{{asset('home/css/font-awesome.min.css')}}" rel="stylesheet" />
+    <link href="home/css/font-awesome.min.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="{{asset('home/css/style.css')}}" rel="stylesheet" />
+    <link href="home/css/style.css" rel="stylesheet" />
     <!-- responsive style -->
     <link href="{{asset('home/css/responsive.css')}}" rel="stylesheet" />
     <!-- Bootstrap JS for dropdowns -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
 
     <style>
         .login-btn {
@@ -42,6 +42,7 @@
             }
         }
     </style>
+     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -92,34 +93,34 @@
                             </form>
                             @if(Route::has('login'))
                             @auth
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+                                {{-- x-app-layout is not working so i used this if i want profile change need to give --}}
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{route('profile.show')}}">
+                                        Profile
                                     </a>
-                                        {{-- x-app-layout is not working so i used this if i want profile change need to give --}}
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{route('profile.show')}}">
-                                            Profile
-                                        </a>
 
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                                            <button type="submit" class="dropdown-item">
-                                                Log Out
-                                            </button>
-                                        </form>
-                                    </div>
-                                </li>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">
+                                            Log Out
+                                        </button>
+                                    </form>
+                                </div>
+                            </li>
 
                             @else
-                                <li class="nav-item">
-                                    <a class="btn btn-primary login-btn" href="{{route('login')}}">LogIn</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="btn btn-success register-btn" href="{{route('register')}}">Register</a>
-                                </li>
-                                @endif
+                            <li class="nav-item">
+                                <a class="btn btn-primary login-btn" href="{{route('login')}}">LogIn</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-success register-btn" href="{{route('register')}}">Register</a>
+                            </li>
+                            @endif
                             @endauth
 
                         </ul>

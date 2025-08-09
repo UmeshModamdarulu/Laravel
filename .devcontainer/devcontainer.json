@@ -1,15 +1,7 @@
 {
-  "name": "Laravel DevContainer",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "laravel",
-  "workspaceFolder": "/workspace",
+  "name": "Laravel Codespace",
+  "image": "mcr.microsoft.com/devcontainers/php:8.1",
+  "postCreateCommand": "composer install && php artisan key:generate",
   "forwardPorts": [8000],
-  "portsAttributes": {
-    "8000": {
-      "label": "Laravel",
-      "onAutoForward": "openBrowser"
-    }
-  },
-  "postCreateCommand": "composer install && cp .env.example .env && php artisan key:generate && php artisan migrate",
-  "remoteUser": "vscode"
+  "extensions": ["bmewburn.vscode-intelephense-client", "ms-azuretools.vscode-docker"]
 }
